@@ -1,0 +1,51 @@
+﻿@model List<User>
+
+<style>
+    main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 40px;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        @foreach (var user in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card" style="width: 100%;">
+                    @if (user.ProfileImage != null)
+                    {
+                        <img src="data:image/jpeg;base64,@Convert.ToBase64String(user.ProfileImage)" alt="Profile Image" class="card-img-top rounded">
+                    }
+                    <div class="card-body">
+                        <h4 class="card-title">@user.Name</h4>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Birth Date: @user.BirthDate</li>
+                        <li class="list-group-item">Email: @user.Email</li>
+                        <li class="list-group-item">Address: @user.Address</li>
+                        <li class="list-group-item">Gender: @user.Gender</li>
+                        <li class="list-group-item">Role: @user.Role</li>
+                        @if (user.Salary != null)
+                        {
+                            <li class="list-group-item">Salary: @user.Salary</li>
+                        }
+                    </ul>
+                    <div class="card-body">
+                        <a class="btn btn-warning" style="text-decoration:none;margin:5px;" asp-controller="User" asp-action="GetUserById" asp-route-id="@user.Id">Edit My Profile</a>
+
+                        <a class="btn btn-danger" style="text-decoration:none;margin:5px;" asp-controller="User" asp-action="DeleteUser" asp-route-id="@user.Id">Remove My Profile</a>
+
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

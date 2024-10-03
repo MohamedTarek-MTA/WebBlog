@@ -1,0 +1,25 @@
+﻿@model Category
+@{
+    SelectList listItems = new SelectList(ViewBag.User, "Id", "Name");
+}
+<form method="post" asp-action="CreateCategory" asp-controller="Category">
+    <fieldset>
+        <div class="form-group">
+            <label for="formGroupExampleInput" asp-for="Name">Name</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Name" asp-for="Name">
+            <span class="text-danger" asp-validation-for="Name"></span>
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput" asp-for="CreationDate">Creation Date</label>
+            <input type="datetime-local" class="form-control" id="formGroupExampleInput" placeholder="" asp-for="CreationDate">
+            <span class="text-danger" asp-validation-for="CreationDate"></span>
+        </div>
+        <label for="formGroupExampleInput" asp-for="UserId">Choose Creator</label>
+        <select class="form-select" aria-label="Default select example" asp-for="UserId" asp-items="listItems"></select>
+        <button type="submit" class="btn btn-success" value="Save">Create</button>
+    </fieldset>
+</form>
+@section Scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

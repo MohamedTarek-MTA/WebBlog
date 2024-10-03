@@ -1,0 +1,38 @@
+﻿@model List<Category>
+
+<style>
+    a {
+        text-decoration: none;
+    }
+</style>
+<table class="table table-striped table-dark">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Creation Date</th>
+            <th scope="col">Datails</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var i in Model)
+        {
+            <tr>
+                <th scope="row">@i.Id</th>
+                <td>@i.Name</td>
+                <td>@i.CreationDate</td>
+                <td>
+                    <a class="btn-outline-info btn-lg" href="~/Category/GetCategoryById/@i.Id">Details</a>
+                </td>
+                <td>
+                    <a class="btn-outline-warning btn-lg" href="~/Category/EditCategory/@i.Id">Edit</a>
+                </td>
+                <td>
+                    <a class="btn-outline-danger btn-lg" href="~/Category/DeleteCategory/@i.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

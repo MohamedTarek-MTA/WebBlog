@@ -1,0 +1,43 @@
+﻿@model User
+<style>
+    main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 40px;
+    }
+</style>
+<div class="card" style="width: 18rem;">
+    @if (Model.ProfileImage != null)
+    {
+        <img src="data:image/jpeg;base64,@Convert.ToBase64String(Model.ProfileImage)" alt="Profile Image" class="rounded">
+
+    }
+    <div class="card-body">
+        <h4 class="card-title">@Model.Name</h4>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Birth Date: @Model.BirthDate</li>
+        <li class="list-group-item">Email: @Model.Email</li>
+        <li class="list-group-item">Address: @Model.Address</li>
+        <li class="list-group-item">Gender: @Model.Gender</li>
+        <li class="list-group-item">Role: @Model.Role</li>
+        @if (Model.Salary != null)
+        {
+            <li class="list-group-item">Salary: @Model.Salary</li>
+        }
+    </ul>
+    <a  class="btn btn-primary" style="text-decoration:none;margin:5px;" asp-controller="Post" asp-action="GetAllPostsForAdmin">Show Posts</a>
+
+    <a class="btn btn-outline-info" style="text-decoration:none;margin:5px;" asp-controller="Post" asp-action="NewPost">Create Post</a>
+
+    <a class="btn btn-success" style="text-decoration:none;margin:5px;" asp-controller="Category" asp-action="NewCategory">Add Category</a>
+
+    <a class="btn btn-info" style="text-decoration:none;margin:5px;" asp-controller="Category" asp-action="GetAllCategoriesForAdmin">Show Categories</a>
+
+    <a class="btn btn-warning" style="text-decoration:none;margin:5px;" asp-controller="User" asp-action="EditUser" asp-route-id="@Model.Id">Edit My Profile</a>
+
+    <a  class="btn btn-danger" style="text-decoration:none;margin:5px;" asp-controller="User" asp-action="DeleteUser" asp-route-id="@Model.Id">Remove My Profile</a>
+
+    <a  class="btn btn-outline-success" style="text-decoration:none;margin:5px;" asp-controller="User" asp-action="GetAllUsers">Show All Users</a>
+</div>

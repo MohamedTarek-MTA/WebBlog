@@ -1,0 +1,21 @@
+﻿@model User
+<h1>Login</h1>
+<form method="post" asp-action="Login" asp-controller="Auth">
+    <fieldset>
+        <div class="form-group">
+            <label for="formGroupExampleInput" asp-for="Email">Email</label>
+            <input type="email" class="form-control" id="formGroupExampleInput" placeholder="Email" asp-for="Email">
+            <span class="text-danger" asp-validation-for="Email"></span>
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput" asp-for="Password">Password</label>
+            <input type="password" class="form-control" id="formGroupExampleInput" placeholder="Password" asp-for="Password">
+            <span class="text-danger" asp-validation-for="Password"></span>
+        </div>
+        <button type="submit" class="btn btn-success" value="Save">Login</button>
+    </fieldset>
+</form>
+@section Scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

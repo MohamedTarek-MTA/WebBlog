@@ -1,0 +1,21 @@
+﻿@model Category
+<form method="post" asp-action="UpdateCategory" asp-controller="Category">
+    <input hidden asp-for="Id">
+    <input hidden asp-for="UserId">
+    <fieldset>
+        <div class="form-group">
+            <label for="formGroupExampleInput" asp-for="Name">Name</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Email" asp-for="Name">
+            <span class="text-danger" asp-validation-for="Name"></span>
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput" asp-for="CreationDate">Creation Date</label>
+            <input type="datetime-local" class="form-control" id="formGroupExampleInput"  asp-for="CreationDate">
+        </div>
+        <button type="submit" class="btn btn-success" value="Save">Update</button>
+    </fieldset>
+</form>
+@section Scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

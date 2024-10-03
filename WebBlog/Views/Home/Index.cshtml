@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<style>
+    .main{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 30px;
+    }
+    a{
+        text-decoration: none;
+        margin:5px;
+        width: 20vw;
+        text-align: center;
+        cursor: pointer;
+    }
+    
+</style>
+<div class="text-center">
+    <h1 class="display-4">Welcome To Our Blog</h1>
+</div>
+<div class="main">
+    <a class="btn-success btn-lg" asp-controller="Auth" asp-action="LoginForm">Login</a>
+    <a class="btn-primary btn-lg" asp-controller="Auth" asp-action="RegisterForm">Sign In</a>
+    <a class="btn-info btn-lg" asp-controller="Post" asp-action="GetAllPosts">Continue As Gust</a>
+</div>

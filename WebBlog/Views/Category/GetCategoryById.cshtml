@@ -1,0 +1,63 @@
+﻿@model Category
+
+<style>
+    main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 40px;
+    }
+</style>
+
+
+
+<div class="container">
+    <h1 class="display-4">@Model.Name</h1>
+    <div class="row">
+        @foreach (var post in ViewBag.Posts)
+        {
+            @if (post.CategoryId == Model.Id)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card" style="width: 100%;">
+                        @if (post.PostImage != null)
+                        {
+                            <img src="data:image/jpeg;base64,@Convert.ToBase64String(post.PostImage)" alt="Profile Image" class="card-img-top rounded">
+                        }
+                        <div class="card-body">
+                            <h4 class="card-title">@post.Title</h4>
+                            <p class="card-text">@post.Description</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Creation Date: @post.CreationTime</li>
+                            <li class="list-group-item">Category: @post.Category.Name</li>
+                            <li class="list-group-item">Creator: @post.User.Name</li>
+                            @if (post.Comments != null)
+                            {
+                                foreach (var comment in post.Comments)
+                                {
+
+                                    <li class="list-group-item-primary">@comment.User.Name</li>
+                                    @if (comment.CommentImage != null)
+                                    {
+                                        <img src="data:image/jpeg;base64,@Convert.ToBase64String(comment.CommentImage)" alt="Profile Image" class="card-img-top rounded">
+                                    }
+                                    <li class="list-group-item-primary">@comment.Content</li>
+                                    <li class="list-group-item-primary">@comment.CreationTime</li>
+                                }
+                            }
+                        </ul>
+                        <div class="card-body">
+                        </div>
+                    </div>
+                </div>
+            }
+
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

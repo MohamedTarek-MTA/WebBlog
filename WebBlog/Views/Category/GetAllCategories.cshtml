@@ -1,0 +1,30 @@
+﻿@model List<Category>
+
+<style>
+    a {
+        text-decoration: none;
+    }
+</style>
+<table class="table table-striped table-dark">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Creation Date</th>
+            <th scope="col">Show Posts</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var i in Model)
+        {
+            <tr>
+                <th scope="row">@i.Id</th>
+                <td>@i.Name</td>
+                <td>@i.CreationDate</td>
+                <td>
+                    <a class="btn-outline-info btn-lg" href="~/Category/GetCategoryById/@i.Id">Show Posts</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

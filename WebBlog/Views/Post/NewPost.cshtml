@@ -1,0 +1,38 @@
+﻿@model Post
+@{
+    SelectList listUsers = new SelectList(ViewBag.Users, "Id", "Name");
+    SelectList listCategories = new SelectList(ViewBag.Categories, "Id", "Name");
+}
+<form method="post" asp-action="CreatePost" asp-controller="Post" enctype="multipart/form-data">
+    <fieldset>
+        <div class="form-group">
+            <label for="formGroupExampleInput" asp-for="Title">Title</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Title" asp-for="Title">
+            <span class="text-danger" asp-validation-for="Title"></span>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1" asp-for="Description">Description</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" asp-for="Description"></textarea>
+            <span class="text-danger" asp-validation-for="Description"></span>
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput" asp-for="CreationTime">Creation Time</label>
+            <input type="datetime-local" class="form-control" id="formGroupExampleInput" placeholder="" asp-for="CreationTime">
+            <span class="text-danger" asp-validation-for="CreationTime"></span>
+        </div>
+        <div class="mb-3">
+            <label for="formFile" class="form-label" asp-for="PostImage">Upload Your Post Image</label>
+            <input class="form-control" type="file" id="formFile" name="postImage" accept=".jpg, .jpeg, .png">
+            <span class="text-danger" asp-validation-for="PostImage"></span>
+        </div>
+        <label for="formGroupExampleInput" asp-for="UserId">Choose Creator</label>
+        <select class="form-select" aria-label="Default select example" asp-for="UserId" asp-items="listUsers"></select>
+        <label for="formGroupExampleInput" asp-for="CategoryId">Choose Categore</label>
+        <select class="form-select" aria-label="Default select example" asp-for="CategoryId" asp-items="listCategories"></select>
+        <button type="submit" class="btn btn-success" value="Save">Create</button>
+    </fieldset>
+</form>
+@section Scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

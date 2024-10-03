@@ -1,0 +1,60 @@
+﻿@model User
+<form asp-action="UpdateUser" asp-controller="User" enctype="multipart/form-data">
+    <input hidden asp-for="Id">
+    <input hidden type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  asp-for="Password">
+
+    <div class="card" style="width: 18rem;">
+            @if (Model.ProfileImage != null)
+            {
+            <img src="data:image/jpeg;base64,@Convert.ToBase64String(Model.ProfileImage)" alt="Profile Image" class="rounded">
+
+            }
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1" asp-for="Name">User Name</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="User Name" asp-for="Name">
+        <span class="text-danger" asp-validation-for="Name"></span>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1" asp-for="Email">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" asp-for="Email" readonly>
+        <span class="text-danger" asp-validation-for="Email"></span>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1" asp-for="Address">Address</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Address" asp-for="Address">
+        <span class="text-danger" asp-validation-for="Address"></span>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1" asp-for="BirthDate">Birth Date</label>
+        <input type="datetime-local" class="form-control" id="exampleInputEmail1" placeholder="Birth Date" asp-for="BirthDate">
+        <span class="text-danger" asp-validation-for="BirthDate"></span>
+    </div>
+    <div class="mb-3">
+        <label for="formFile" class="form-label" asp-for="ProfileImage">Upload Your Profile Image</label>
+        <input class="form-control" type="file" id="formFile" name="profileImage" accept=".jpg, .jpeg, .png">
+        <span class="text-danger" asp-validation-for="ProfileImage"></span>
+    </div>
+    <div class="mb-3">
+        <label for="formFile" class="form-label" asp-for="Salary">Salary</label>
+        <input class="form-control" type="text" id="formFile" asp-for="Salary" >
+        <span class="text-danger" asp-validation-for="Salary"></span>
+    </div>
+    <div class="mb-3">
+        <label for="formFile" class="form-label" asp-for="Role">Role</label>
+        <select class="form-select" aria-label="Default select example" asp-for="Role">
+            <option value="Admin">Admin</option>
+            <option value="Publisher">Publisher</option>
+        </select>
+    </div>
+    <label for="formGroupExampleInput" asp-for="Gender">Gender</label>
+    <select class="form-select" aria-label="Default select example" asp-for="Gender">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+    </select>
+    <button type="submit" class="btn btn-primary">Update</button>
+</form>
+@section Scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
